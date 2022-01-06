@@ -56,13 +56,15 @@
             this.previousOperand = ''
     }
 
-     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand
-        if (this.operation != null) {
-            this.previousOperandTextElement.innerText = 
-            `${this.previousOperand} ${this.operation}`
 
+    updateDisplay() {
+        this.currentOperandTextElement.innerText = this.currentOperand.toLocaleString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        if (this.operation != null) {
+         this.previousOperandTextElement.innerText = `${this.previousOperand.toLocaleString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} ${this.operation}`
+        } else {
+            this.previousOperandTextElement.innerText = ''
         }
+
      }
  }
  
